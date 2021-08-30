@@ -1,0 +1,123 @@
+# coding=utf-8
+import os
+import shutil
+import zipfile
+import platform
+import subprocess
+
+WINDOWS = "Windows"
+Linux = "Linux"
+MACOS = "Darwin"
+
+
+def get_system() -> str:
+    return platform.system()
+
+
+def execute_cmd(cmd):
+    if get_system() in [WINDOWS]:
+        encoding = "GBK"
+    else:
+        encoding = "UTF-8"
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding=encoding,
+                         close_fds=True)
+    (stdoutput, erroutput) = p.communicate()
+    return 0 if not erroutput else -1, erroutput if erroutput else stdoutput
+
+
+def read_file_text(file_path) -> str:
+    with open(file_path, "r", encoding="UTF-8") as f:
+        return f.read()
+
+
+def write_file_text(file_path, text) -> int:
+    with open(file_path, "w", encoding="UTF-8") as f:
+        return f.write(text)
+
+
+def get_file_name_list(file_dir: str):
+    file_dir = file_dir.replace("\\", "/")
+    file_name_list = []
+    for root, dirs, files in os.walk(file_dir):
+        for f in files:
+            file_name_list.append(os.path.join(root, f).replace(
+                "\\", "/").replace(file_dir, ""))
+    return file_name_list
+
+
+def zip_file(src_dir, zip_name=""):
+    if not zip_name:
+        zip_name = src_dir + '.zip'
+    cmd = f"cd {src_dir} && zip -r -q -D {os.path.abspath(zip_name)} *"
+    status, message = execute_cmd(cmd)
+    if status == 0:
+        return 0, "success",
+    delete(zip_name)
+    z = zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED)
+    for dirpath, dirnames, filenames in os.walk(src_dir):
+        fpath = dirpath.replace(src_dir, '')
+        fpath = fpath and fpath + os.sep or ''
+        for filename in filenames:
+            z.write(os.path.join(dirpath, filename), fpath + filename)
+    z.close()
+    return 0, "success"
+
+
+def unzip_file(zip_src, dst_dir):
+    r = zipfile.is_zipfile(zip_src)
+    if r:
+        fz = zipfile.ZipFile(zip_src, 'r')
+        for file in fz.namelist():
+            fz.extract(file, dst_dir)
+    else:
+        return -1, "This is not zip"
+    return 0, "success"
+
+
+def mv(src_path, dst_path):
+    copy(src_path, dst_path)
+    delete(src_path)
+    return 0, "success"
+
+
+def delete(path):
+    if not os.path.exists(path):
+        return 0, "success"
+    if os.path.isfile(path):
+        os.remove(path)
+    else:
+        platform_system = get_system()
+        cmd = ""
+        if platform_system == WINDOWS:
+            cmd = f"rd /s /q {path}"
+        elif platform_system == Linux:
+            cmd = f"rm -rf {path}"
+        elif platform_system == MACOS:
+            cmd = f"rm -rf {path}"
+
+        if not cmd:
+            shutil.rmtree(path)
+        else:
+            return execute_cmd(cmd)
+
+    return 0, "success"
+
+
+def copy(source_path, target_path):
+    if not os.path.exists(source_path):
+        return 0, "The file does not exist, but it succeeds directly. Some projects do not have a lib folder "
+    if os.path.isfile(source_path):
+        target_dirname = os.path.dirname(target_path)
+        if not os.path.exists(target_dirname):
+        
+            os.makedirs(target_dirname)
+    if os.path.exists(target_path):
+       
+        status, msg = delete(target_path)
+        if status != 0:
+            return status, msg
+    if os.path.isdir(source_path):
+        shutil.copytree(source_path, target_path)
+    else:
+        shutil.copyfile(source_path, target_path)
+    return 0, "success"
