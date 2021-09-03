@@ -6,7 +6,6 @@ import yaml
 import argparse
 import time
 import sys
-
 import xml.etree.ElementTree as ET
 
 if hasattr(sys, "_flask"):
