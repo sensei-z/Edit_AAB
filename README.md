@@ -1,4 +1,4 @@
-# apk to aab
+# apk to aab v1.3
 
 * required python3.6 +
 
