@@ -245,7 +245,7 @@ class Bundletool:
             if status != 0:
                 return -999, "Signature error"
         else:
-            print_log("Window does not check, to avoid libraries without openssl")
+            print_log("Window")
         print_log(f"######################################################")
         print_log(f"[apktool]:{self.apktool}")
         print_log(f"[apktool version number]:------")
