@@ -7,7 +7,7 @@ Dont use space and any type of symbol in your name  apk , aab , keystore & OutPu
 
 **apk to aab**<br /> 
 Your apk and OutPut folder does not contain any type  of symbol and space in name <br /> 
-Your apk to be working<br /> 
+Your apk should to be working<br /> 
 Be sure your apk is not corrupted <br /> 
 **aab to apk**<br /> 
 Your aab and OutPut folder and directory  does not contain any type of symbol and space in name <br /> 
