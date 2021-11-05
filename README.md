@@ -1,7 +1,6 @@
-## GUI APPLICATION FOR CONVERTING APK TO AAB // Do not modify 
+## GUI APPLICATION FOR CONVERTING APK TO AAB 
 
-A tool which allow you to modify the compiled .aab file by converting apk to aab 
+A tool which allow you to modify the AAB file 
 
-requirement - python 3.6+ , java 8 & .Net core framework 4.5+
-
+Requirement - python 3.6+ , java 8 & .Net core framework 4.5+
 

@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "AAB Tool/1.0.0": {
+        "dependencies": {
+          "Microsoft.WindowsAPICodePack.Core": "1.1.0",
+          "Microsoft.WindowsAPICodePack.Shell": "1.1.0"
+        },
+        "runtime": {
+          "AAB Tool.dll": {}
+        }
+      },
+      "Microsoft.WindowsAPICodePack.Core/1.1.0": {
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "Microsoft.WindowsAPICodePack.Shell/1.1.0": {
+        "dependencies": {
+          "Microsoft.WindowsAPICodePack.Core": "1.1.0"
+        },
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.Shell.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AAB Tool/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.WindowsAPICodePack.Core/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-szH5i6kUEuukCJN2vxPKRKvrTrtb759ScSWvlzN0lA9LNfZZQiauqqE5UrMZUdt5GzlJFSHfHkdcIe4qEC7Z1A==",
+      "path": "microsoft.windowsapicodepack.core/1.1.0",
+      "hashPath": "microsoft.windowsapicodepack.core.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.WindowsAPICodePack.Shell/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mf++Hez9kbikfIuwz4uCdQRwJDpd38rCD/F5CWU78tzyZtpEsUR6oWOX8ea59XvQ3hLitm2zZe3fXEgTD5Qyxg==",
+      "path": "microsoft.windowsapicodepack.shell/1.1.0",
+      "hashPath": "microsoft.windowsapicodepack.shell.1.1.0.nupkg.sha512"
+    }
+  }
+}
