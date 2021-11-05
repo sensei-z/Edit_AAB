@@ -1,4 +1,4 @@
-## GUI APPLICATION FOR CONVERTING APK TO AAB 
+## GUI APPLICATION FOR MODIFYING AAB FILE
 
 A tool which allow you to modify the AAB file 
 
