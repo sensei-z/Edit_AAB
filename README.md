@@ -2,7 +2,7 @@
 
 A tool which allow you to modify the AAB file  <br /> 
 Disable your antivirus and windows defender <br /> 
-Requirement - python 3.6+ , java 8 & .Net core framework 4.5+ <br /> 
+Requirement - python 3.6+ , java 8 & .NET Framework 4.5+ <br /> 
 Dont use space and any type of symbol in your name  apk , aab , keystore & OutPut folder name <br /> 
 
 **apk to aab**<br /> 
